@@ -10,5 +10,13 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      window.onerror = function(msg, src, line, col, err) {
+        document.body.innerHTML = '<div style="padding:24px;font-family:monospace;background:#fff1f0;color:#c00;border:2px solid #c00;margin:20px;border-radius:8px"><b>JS Error</b><br>' + msg + '<br>' + (src||'') + ':' + line + '</div>';
+      };
+      window.addEventListener('unhandledrejection', function(e) {
+        document.body.innerHTML = '<div style="padding:24px;font-family:monospace;background:#fff1f0;color:#c00;border:2px solid #c00;margin:20px;border-radius:8px"><b>Promise Error</b><br>' + e.reason + '</div>';
+      });
+    </script>
   </body>
 </html>
