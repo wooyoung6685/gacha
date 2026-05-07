@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* iOS 바운스 스크롤 방지 */
+html, body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+/* 텍스트 선택 방지 (머신/캡슐 영역) */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* iOS 더블탭 줌 방지 */
+button, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* 손잡이 진동 효과 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  15% { transform: translateX(-8px) rotate(-2deg); }
+  30% { transform: translateX(8px) rotate(2deg); }
+  45% { transform: translateX(-5px) rotate(-1deg); }
+  60% { transform: translateX(5px) rotate(1deg); }
+  75% { transform: translateX(-3px) rotate(-0.5deg); }
+  90% { transform: translateX(3px) rotate(0.5deg); }
+}
+
+/* 캡슐 浮遊 애니메이션 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(3deg); }
+  66% { transform: translateY(4px) rotate(-2deg); }
+}
+
+/* 동전 투입 애니메이션 */
+@keyframes coin-drop {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(40px) scale(0.8); opacity: 0.7; }
+  100% { transform: translateY(80px) scale(0.3); opacity: 0; }
+}
+
+/* 컨페티 하강 */
+@keyframes confetti-fall {
+  0% { transform: translateY(-10px) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg) scale(0.5); opacity: 0; }
+}
+
+.animate-shake {
+  animation: shake 0.6s ease-in-out;
+}
+
+.animate-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.animate-coin-drop {
+  animation: coin-drop 0.4s ease-in forwards;
+}
